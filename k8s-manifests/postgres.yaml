@@ -1,14 +1,3 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: postgres-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -30,7 +19,7 @@ spec:
             - name: POSTGRES_USER
               value: admin
             - name: POSTGRES_PASSWORD
-              value: password
+              value: "password" # Targeted by Jenkins dynamically
             - name: POSTGRES_DB
               value: jenkins_db
           ports:
@@ -40,8 +29,9 @@ spec:
               mountPath: /var/lib/postgresql/data
       volumes:
         - name: postgres-storage
-          persistentVolumeClaim:
-            claimName: postgres-pvc
+          hostPath:
+            path: /mnt/data/postgres  # Stores data statically on your AWS worker node disk
+            type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: Service
