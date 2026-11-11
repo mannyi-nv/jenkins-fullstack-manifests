@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: mannydevops/jenkins-web-backend:24
+          image: mannydevops/jenkins-web-backend:25
           ports:
             - containerPort: 8000
           env:
