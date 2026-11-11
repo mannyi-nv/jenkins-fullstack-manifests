@@ -14,6 +14,8 @@ spec:
       labels:
         app: postgres
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: ip-10-0.71-86 # AWS worker node ip
       containers:
         - name: postgres
           image: postgres:15-alpine
