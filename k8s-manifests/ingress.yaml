@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: jenkins-fullstack-ingress
-  namespace: default
+  namespace: jenkins-fullstack-app
 spec:
   ingressClassName: traefik
   rules:
