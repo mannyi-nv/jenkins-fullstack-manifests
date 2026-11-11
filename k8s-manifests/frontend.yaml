@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: mannydevops/jenkins-web-frontend:23
+          image: mannydevops/jenkins-web-frontend:24
           ports:
             - containerPort: 80
 ---
