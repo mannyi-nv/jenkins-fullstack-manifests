@@ -1,0 +1,18 @@
+deployment:
+  enabled: true
+  kind: Deployment
+  replicas: 1
+
+nodeSelector:
+  kubernetes.io/hostname: ip-10-0-71-86
+
+service:
+  enabled: true
+  spec:
+    type: NodePort
+
+ports:
+  web:
+    nodePort: 30080
+  websecure:
+    nodePort: 30443
